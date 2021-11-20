@@ -1,14 +1,14 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "EmployeesAPI",
+    "title": "Catalog api",
     "version": "v1"
   },
   "paths": {
-    "/api/Employee": {
+    "/api/v1/Catalog": {
       "get": {
         "tags": [
-          "Employee"
+          "Catalog"
         ],
         "responses": {
           "200": {
@@ -18,7 +18,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Employee"
+                    "$ref": "#/components/schemas/Product"
                   }
                 }
               },
@@ -26,7 +26,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Employee"
+                    "$ref": "#/components/schemas/Product"
                   }
                 }
               },
@@ -34,7 +34,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Employee"
+                    "$ref": "#/components/schemas/Product"
                   }
                 }
               }
@@ -44,23 +44,23 @@
       },
       "post": {
         "tags": [
-          "Employee"
+          "Catalog"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/Product"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/Product"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/Product"
               }
             }
           }
@@ -71,57 +71,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Product"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Product"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "boolean"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Employee/{id}": {
-      "get": {
-        "tags": [
-          "Employee"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Employee"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Employee"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Employee"
+                  "$ref": "#/components/schemas/Product"
                 }
               }
             }
@@ -130,34 +90,23 @@
       },
       "put": {
         "tags": [
-          "Employee"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
+          "Catalog"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/Product"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/Product"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/Product"
               }
             }
           }
@@ -168,17 +117,77 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Product"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Product"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Catalog/{id}": {
+      "get": {
+        "tags": [
+          "Catalog"
+        ],
+        "operationId": "GetProduct",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
                 }
               }
             }
@@ -187,16 +196,16 @@
       },
       "delete": {
         "tags": [
-          "Employee"
+          "Catalog"
         ],
+        "operationId": "DeleteProduct",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             }
           }
         ],
@@ -206,17 +215,135 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Product"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Product"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Catalog/GetProductByCategory/{category}": {
+      "get": {
+        "tags": [
+          "Catalog"
+        ],
+        "operationId": "GetProductByCategory",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Catalog/GetProductByName/{name}": {
+      "get": {
+        "tags": [
+          "Catalog"
+        ],
+        "operationId": "GetProductByName",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
                 }
               }
             }
@@ -227,28 +354,63 @@
   },
   "components": {
     "schemas": {
-      "Employee": {
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "Product": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "nullable": true
           },
           "name": {
             "type": "string",
             "nullable": true
           },
-          "mobile": {
+          "category": {
             "type": "string",
             "nullable": true
           },
-          "email": {
+          "summary": {
             "type": "string",
             "nullable": true
           },
-          "salary": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageFile": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
             "type": "number",
-            "format": "float"
+            "format": "double"
           }
         },
         "additionalProperties": false

@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <OpenApiReference Include="OpenAPIs\swagger.json" CodeGenerator="NSwagCSharp">
-      <SourceUri>https://localhost:44361/swagger/v1/swagger.json</SourceUri>
+      <SourceUri>http://localhost:8000/swagger/v1/swagger.json</SourceUri>
     </OpenApiReference>
   </ItemGroup>
 
